@@ -19,16 +19,18 @@
 
       <div class="row">
         <div class="col-md-2">
+          <br>
           <ul class="list-group">
-            <li class="list-group-item"><a href="http://bitter.kicks-ass.org:9091" target="iframe-container">Transmission client</a></li>
-            <li class="list-group-item"><a href="http://eztvproxy.org" target="iframe-container">Eztv</a></li>
-            <li class="list-group-item"><a href="http://bitter.kicks-ass.org:8080" target="iframe-container">Router admin</a></li>
+            <li class="list-group-item"><a onclick="stopWebcam();" href="http://bitter.kicks-ass.org:9091" target="iframe-container">Transmission client</a></li>
+            <li class="list-group-item"><a onclick="stopWebcam();" href="http://eztvproxy.org" target="iframe-container">Eztv</a></li>
+            <li class="list-group-item"><a onclick="stopWebcam();" href="http://bitter.kicks-ass.org:8080" target="iframe-container">Router admin</a></li>
+            <li class="list-group-item"><a href="javascript:startWebcam();" target="iframe-container">Webcam</a></li>
           </ul>
-          <button onclick="stopWebcam();">Stop webcam</button>
         </div>
 
         <div class="col-md-10">
-          <iframe src="http://bitter.kicks-ass.org:9999/webcam/webcam.jpeg?timestamp=1432423" id="webcam" name="iframe-container" width="100%" height="100%"></iframe>
+          <img id="webcam-image" src="http://bitter.kicks-ass.org:9999/webcam/webcam.jpeg?timestamp=1432423" alt="" style="display: none" />
+          <iframe src="" id="iframe" name="iframe-container" width="100%" height="100%"></iframe>
         </div>
       </div>
 
@@ -36,13 +38,17 @@
 
 
     <script type="text/javascript" charset="utf-8">
-      var webcamId = setInterval(function () {
-        var webcam = document.getElementById("webcam");
-        if (webcam.src.indexOf("webcam.jpeg") > -1)
-          webcam.src = webcam.src.split("?")[0] + "?timestamp=" + Date.now();
-      }, 2000);
+      var webcamImage = document.getElementById("webcam-image");
+      function startWebcam () {
+        document.getElementById("iframe").src = "about:blank"
+        webcamImage.style.display = "block";
+        var webcamId = setInterval(function () {
+          webcamImage.src = webcamImage.src.split("?")[0] + "?timestamp=" + Date.now();
+        }, 1000);
+      }
 
       function stopWebcam () {
+        webcamImage.style.display = "none";
         clearInterval(webcamId);
       }
     </script>
