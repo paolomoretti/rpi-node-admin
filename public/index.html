@@ -1,4 +1,5 @@
-<html>
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ng="http://angularjs.org" id="ng-app" ng-app="Admin">
   <head>
     <title>Rpi - node ADMIN by bitterbrown</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +11,10 @@
     <link href="/assets/css/flat-ui.css" rel="stylesheet">
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid" ng-controller="Main">
       <div class="row palette-peter-river">
         <div class="col-md-12">
-          <h3>Rpi/Nodejs Administration</h3>
+          <h6>Casapiton Administration</h6>
         </div>
       </div>
 
@@ -24,13 +25,13 @@
             <li class="list-group-item"><a onclick="stopWebcam();" href="http://bitter.kicks-ass.org:9091" target="iframe-container">Transmission client</a></li>
             <li class="list-group-item"><a onclick="stopWebcam();" href="http://eztvproxy.org" target="iframe-container">Eztv</a></li>
             <li class="list-group-item"><a onclick="stopWebcam();" href="http://bitter.kicks-ass.org:8080" target="iframe-container">Router admin</a></li>
-            <li class="list-group-item"><a href="javascript:startWebcam();" target="iframe-container">Webcam</a></li>
+            <li class="list-group-item"><a href="#/webcam/">Webcam</a></li>
           </ul>
         </div>
 
         <div class="col-md-10">
-          <img id="webcam-image" src="http://bitter.kicks-ass.org:9999/webcam/webcam.jpeg?timestamp=1432423" alt="" style="display: none" />
-          <iframe src="" id="iframe" name="iframe-container" width="100%" height="100%"></iframe>
+          <ng-view></ng-view>
+          <!-- iframe src="" id="iframe" name="iframe-container" width="100%" height="100%"></iframe -->
         </div>
       </div>
 
@@ -52,5 +53,8 @@
         clearInterval(webcamId);
       }
     </script>
+    <script type="text/javascript" charset="utf-8" src="/assets/js/angular.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/assets/js/angular-route.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/assets/js/main.js"></script>
   </body>
 </hmtl>
