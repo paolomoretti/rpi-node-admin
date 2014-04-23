@@ -24,15 +24,27 @@
             <li class="list-group-item"><a href="http://eztvproxy.org" target="iframe-container">Eztv</a></li>
             <li class="list-group-item"><a href="http://bitter.kicks-ass.org:8080" target="iframe-container">Router admin</a></li>
           </ul>
+          <button onclick="stopWebcam();">Stop webcam</button>
         </div>
 
         <div class="col-md-10">
-          <iframe src="" name="iframe-container" width="100%" height="100%"></iframe>
+          <iframe src="http://bitter.kicks-ass.org:9999/webcam/webcam.jpeg?timestamp=1432423" id="webcam" name="iframe-container" width="100%" height="100%"></iframe>
         </div>
       </div>
 
     </div>
 
 
+    <script type="text/javascript" charset="utf-8">
+      var webcamId = setInterval(function () {
+        var webcam = document.getElementById("webcam");
+        if (webcam.src.indexOf("webcam.jpeg") > -1)
+          webcam.src = webcam.src.split("?")[0] + "?timestamp=" + Date.now();
+      }, 2000);
+
+      function stopWebcam () {
+        clearInterval(webcamId);
+      }
+    </script>
   </body>
 </hmtl>
