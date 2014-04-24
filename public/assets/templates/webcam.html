@@ -1,6 +1,8 @@
 <div style="text-align: center; margin-top: 20px">
-  <img ng-src="{{webcamSrc}}" />
+  <img ng-src="{{webcamSrc}}" ng-show="started == true" />
   <br>
   <br>
-  <button class="btn" ng-class="{'btn-primary': intId == false, 'btn-danger': intId != false}" name="button" ng-click="toggleWebcam()">{{actionLabel}}</button>
+  <button ng-hide="executing == true" class="btn" ng-class="{'btn-primary': started == false, 'btn-danger': started == true}" name="button" ng-click="toggleWebcam()">{{actionLabel}}</button>
+  <input type="text" ng-model="freq" ng-show="started == true && executing == false" size="1" />
+  <button ng-show="executing == true" disabled class="disabled btn">Please wait ...</button>
 </div>
