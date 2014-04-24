@@ -8,11 +8,9 @@ app = express();
 app.use(express["static"](__dirname + '/public'));
 
 app.get('/webcam/:action', function(req, res) {
-  var actions, cb, exec, fs, raspberryOpts, sshclient, sys;
+  var actions, exec, raspberryOpts, sshclient, sys;
   sys = require('sys');
   exec = require('child_process').exec;
-  fs = require("fs");
-  cb = require("cb");
   sshclient = require("sshclient");
   actions = {
     start: {

@@ -7,8 +7,6 @@ app.get '/webcam/:action', (req, res)->
 
   sys = require('sys')
   exec = require('child_process').exec
-  fs = require "fs"
-  cb = require "cb"
   sshclient = require "sshclient"
 
   actions =
