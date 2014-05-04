@@ -1,4 +1,7 @@
-* {
-  font-family: Georgia;
-  background: #fafafa;
+body, html, iframe, .container-fluid {
+    height: 100%;
+}
+
+iframe {
+    border: 0;
 }

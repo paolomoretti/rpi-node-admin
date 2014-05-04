@@ -12,6 +12,10 @@ Admin.config [
       templateUrl: "/assets/templates/webcam.html"
       controller: "Webcam"
 
+    $routeProvider.when "/redirect/:page",
+      templateUrl: "/assets/templates/iframe.html"
+      controller: "Iframe"
+
 ]
 
 #------------------------------------------------------------------------------
@@ -22,6 +26,18 @@ Main = ($scope) ->
 
 Home = ($scope) ->
   console.log "Scope", $scope
+
+#------------------------------------------------------------------------------
+
+Iframe = ($scope, $routeParams, $sce) ->
+  $scope.iframeUrl = "about:blank"
+
+  $("iframe").height($(window).height() - $("iframe").offset().top - 10)
+
+  switch $routeParams.page
+    when "transmission" then $scope.iframeUrl = $sce.trustAsResourceUrl "http://bitter.kicks-ass.org:9091"
+    when "xbmc" then $scope.iframeUrl = $sce.trustAsResourceUrl "http://192.168.0.13:9090"
+    when "router" then $scope.iframeUrl = $sce.trustAsResourceUrl "http://bitter.kicks-ass.org:8080"
 
 #------------------------------------------------------------------------------
 
