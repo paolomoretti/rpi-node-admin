@@ -45,4 +45,4 @@ app.get('/webcam/:action', function(req, res) {
 
 app.listen(9999);
 
-console.log("Node started!!");
+console.log("Node started on port 9999!!");
