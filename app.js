@@ -36,7 +36,6 @@ app.get('/webcam/:action', function(req, res) {
   };
   raspberryOpts.session.push(actions[req.params.action]);
   return sshclient.session(raspberryOpts, function(error) {
-    console.log("Action " + req.params.action + " executed!!!");
     if (error === null) {
       return res.send("ok");
     }
@@ -45,4 +44,4 @@ app.get('/webcam/:action', function(req, res) {
 
 app.listen(9999);
 
-console.log("Node started on port 9999!!");
+console.log("Node started on port 9999 - yayy");

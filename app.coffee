@@ -28,11 +28,10 @@ app.get '/webcam/:action', (req, res)->
   raspberryOpts.session.push actions[req.params.action]
 
   sshclient.session raspberryOpts, (error)->
-    console.log "Action " + req.params.action + " executed!!!"
     if error is null
       res.send "ok"
 
 
 app.listen 9999
 
-console.log "Node started on port 9999!!"
+console.log "Node started on port 9999 - yayy"
