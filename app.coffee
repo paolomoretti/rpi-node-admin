@@ -2,7 +2,7 @@ express = require 'express'
 
 app = express()
 app.use express.static(__dirname + '/public')
-app.port = 9090
+app.port = 9898
 
 app.get '/webcam/:action', (req, res)->
 
