@@ -2,6 +2,7 @@ express = require 'express'
 
 app = express()
 app.use express.static(__dirname + '/public')
+app.port = 9090
 
 app.get '/webcam/:action', (req, res)->
 
@@ -32,6 +33,6 @@ app.get '/webcam/:action', (req, res)->
       res.send "ok"
 
 
-app.listen 9999
+app.listen app.port
 
-console.log "Node started on port 9999 - yayy"
+console.log "Node started on port "+app.port+" - yayy"

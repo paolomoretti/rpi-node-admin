@@ -7,6 +7,8 @@ app = express();
 
 app.use(express["static"](__dirname + '/public'));
 
+app.port = 9090;
+
 app.get('/webcam/:action', function(req, res) {
   var actions, exec, raspberryOpts, sshclient, sys;
   sys = require('sys');
@@ -42,6 +44,6 @@ app.get('/webcam/:action', function(req, res) {
   });
 });
 
-app.listen(9999);
+app.listen(app.port);
 
-console.log("Node started on port 9999 - yayy");
+console.log("Node started on port " + app.port + " - yayy");
